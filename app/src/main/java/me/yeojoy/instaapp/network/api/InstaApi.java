@@ -1,0 +1,19 @@
+package me.yeojoy.instaapp.network.api;
+
+import java.util.List;
+
+import me.yeojoy.instaapp.model.Photos;
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
+
+/**
+ * Created by yeojoy on 2017. 1. 20..
+ */
+
+public interface InstaApi {
+    @GET("{userName}/media?max_id={maxId}")
+    Call<Photos> getPhotos(@Path("userName") String userName,
+                                 @Query("maxId") String maxId);
+}

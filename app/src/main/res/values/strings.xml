@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">InstaApp</string>
+
+    <string name="toast_warning_not_validate_username">사용자 ID가 없습니다.</string>
+</resources>
