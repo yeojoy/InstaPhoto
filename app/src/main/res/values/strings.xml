@@ -2,4 +2,13 @@
     <string name="app_name">InstaApp</string>
 
     <string name="toast_warning_not_validate_username">사용자 ID가 없습니다.</string>
+
+    <!-- list 화면 -->
+    <string name="list_hint_query">인스타그램 ID</string>
+
+    <!-- Button name -->
+    <string name="button_query">검색</string>
+
+    <!-- warning -->
+    <string name="warning_username_not_valid">사용자 이름은 알파벳과 숫자, \'_\'로만 사용할 수 있습니다.</string>
 </resources>

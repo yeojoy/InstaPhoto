@@ -1,4 +1,4 @@
-package me.yeojoy.instaapp.model;
+package me.yeojoy.instaapp.model.api;
 
 import android.os.Parcel;
 import android.os.Parcelable;

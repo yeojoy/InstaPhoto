@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="4dp">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_input_layout_query"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/button_search"
+            app:errorEnabled="true">
+
+            <EditText
+                android:id="@+id/edit_text_query"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/list_hint_query" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@id/button_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="4dp"
+            android:text="@string/button_query"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_photo_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/text_input_layout_query"/>
+    </RelativeLayout>
+</layout>

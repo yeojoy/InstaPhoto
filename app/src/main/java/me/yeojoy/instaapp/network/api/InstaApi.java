@@ -1,8 +1,6 @@
 package me.yeojoy.instaapp.network.api;
 
-import java.util.List;
-
-import me.yeojoy.instaapp.model.Photos;
+import me.yeojoy.instaapp.model.api.Photos;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -13,7 +11,6 @@ import retrofit2.http.Query;
  */
 
 public interface InstaApi {
-    @GET("{userName}/media?max_id={maxId}")
-    Call<Photos> getPhotos(@Path("userName") String userName,
-                                 @Query("maxId") String maxId);
+    @GET("{userName}/media")
+    Call<Photos> getPhotos(@Path("userName") String userName, @Query("maxId") String maxId);
 }
