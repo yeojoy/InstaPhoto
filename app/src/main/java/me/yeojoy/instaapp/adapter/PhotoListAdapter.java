@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import me.yeojoy.instaapp.R;
@@ -25,7 +26,11 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.Phot
     private static final String DEFUALT_ID = "0";
 
     public PhotoListAdapter(List<InstaPhoto> instaPhotos) {
-        mInstaPhotos = instaPhotos;
+        if (instaPhotos != null) {
+            mInstaPhotos = instaPhotos;
+        } else {
+            mInstaPhotos = new ArrayList<>();
+        }
     }
 
     @Override
@@ -39,10 +44,19 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.Phot
     public void onBindViewHolder(PhotoItemHolder holder, int position) {
         InstaPhoto instaPhoto = mInstaPhotos.get(position);
 
-        Glide.with(holder.mBinding.photoImageView.getContext())
+//        Glide.with(holder.mBinding.photoImageView.getContext())
+//                .load(instaPhoto.mImageUrl)
+//                .crossFade()
+//                .into(holder.mBinding.photoImageView);
+        if (position == 0) {
+            instaPhoto.mImageUrl = "http://blogimg.ohmynews.com/attach/4355/1038322469.jpg";
+        } else if (position == 1) {
+            instaPhoto.mImageUrl = "http://blogimg.ohmynews.com/attach/4355/1020645369.jpg";
+        }
+        Glide.with(holder.mBinding.imageView.getContext())
                 .load(instaPhoto.mImageUrl)
                 .crossFade()
-                .into(holder.mBinding.photoImageView);
+                .into(holder.mBinding.imageView);
     }
 
     @Override
@@ -55,6 +69,11 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.Phot
             return mInstaPhotos.get(getItemCount() - 1).mId;
         }
         return DEFUALT_ID;
+    }
+
+    public void addPhotos(List<InstaPhoto> photos) {
+        mInstaPhotos.addAll(photos);
+        notifyDataSetChanged();
     }
 
     public static class PhotoItemHolder extends RecyclerView.ViewHolder {

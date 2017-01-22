@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import me.yeojoy.instaapp.R;
@@ -82,7 +83,11 @@ public class NetworkManager implements NetworkConstants {
             public void onResponse(Call<Photos> call, Response<Photos> response) {
                 Photos photos = response.body();
                 if (listener != null) {
-                    listener.onGetData(ModelConvertor.convertPhotoToInstaPhoto(photos.mItems));
+                    if (photos != null && photos.mItems != null) {
+                        listener.onGetData(ModelConvertor.convertPhotoToInstaPhoto(photos.mItems));
+                    } else {
+                        listener.onGetData(new ArrayList<>());
+                    }
                 }
             }
 
