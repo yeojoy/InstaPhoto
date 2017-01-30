@@ -13,12 +13,14 @@ import android.os.Parcelable;
 public class InstaPhoto implements Parcelable {
     public String mId;
     public String mImageUrl;
+    public String mType;
     public float mImageWidth;
     public float mImageHeight;
 
-    public InstaPhoto(String id, String imageUrl, float width, float height) {
+    public InstaPhoto(String id, String imageUrl, String type, float width, float height) {
         mId = id;
         mImageUrl = imageUrl;
+        mType = type;
         mImageWidth = width;
         mImageHeight = height;
     }
@@ -26,6 +28,7 @@ public class InstaPhoto implements Parcelable {
     protected InstaPhoto(Parcel in) {
         mId = in.readString();
         mImageUrl = in.readString();
+        mType = in.readString();
         mImageWidth = in.readFloat();
         mImageHeight = in.readFloat();
     }
@@ -51,7 +54,19 @@ public class InstaPhoto implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(mId);
         dest.writeString(mImageUrl);
+        dest.writeString(mType);
         dest.writeFloat(mImageWidth);
         dest.writeFloat(mImageHeight);
+    }
+
+    @Override
+    public String toString() {
+        return "InstaPhoto{" +
+                "mId='" + mId + '\'' +
+                ", mImageUrl='" + mImageUrl + '\'' +
+                ", mType='" + mType + '\'' +
+                ", mImageWidth=" + mImageWidth +
+                ", mImageHeight=" + mImageHeight +
+                '}';
     }
 }

@@ -10,7 +10,7 @@
     <string name="button_query">검색</string>
 
     <!-- warning -->
-    <string name="warning_username_not_valid">사용자 이름은 알파벳과 숫자, \'_\'로만 사용할 수 있습니다.</string>
+    <string name="warning_username_not_valid">사용자 이름은 알파벳과 숫자 _ . 으로만 사용할 수 있습니다.</string>
     <string name="warning_username_check_again">사용자 이름을 다시 한 번 확인해 주세요.</string>
     <string name="warning_username_no_photos">사진이 없습니다.</string>
 </resources>

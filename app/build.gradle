@@ -4,6 +4,7 @@ apply plugin: 'me.tatarka.retrolambda'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
+
     defaultConfig {
         applicationId "me.yeojoy.instaapp"
         minSdkVersion 15
@@ -26,6 +27,16 @@ android {
     compileOptions {
         targetCompatibility 1.8
         sourceCompatibility 1.8
+    }
+
+    applicationVariants.all { variant ->
+
+        def output = variant.outputs.get(0)
+        File apk = output.outputFile
+        String newName = output.outputFile.name.replace(project.name, parent.name)
+                .replace(".apk",
+                "-${versionCode}" + "-${versionName}.apk")
+        output.outputFile = new File(apk.parentFile, newName)
     }
 }
 

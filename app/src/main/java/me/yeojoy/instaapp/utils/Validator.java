@@ -9,14 +9,17 @@ import java.util.regex.Pattern;
  */
 
 public class Validator {
-    public static boolean isValidUserName(String userName) {
-        return !TextUtils.isEmpty(userName);
-    }
 
+    /**
+     * Insta userName validation 체크
+     * 영어, 숫자, _(under bar), .(dot)만 가능
+     * @param query
+     * @return
+     */
     public static boolean isQueryValidated(String query) {
         if (TextUtils.isEmpty(query)) return false;
 
-        Pattern userNamePatterns = Pattern.compile("[\\w\\d_]+");
+        Pattern userNamePatterns = Pattern.compile("[\\w\\d_\\.]+");
 
         return userNamePatterns.matcher(query).matches();
     }

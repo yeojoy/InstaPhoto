@@ -11,6 +11,6 @@ import retrofit2.http.Query;
  */
 
 public interface InstaApi {
-    @GET("{userName}/media")
-    Call<Photos> getPhotos(@Path("userName") String userName, @Query("maxId") String maxId);
+    @GET("{userName}/media/")
+    Call<Photos> getPhotos(@Path("userName") String userName, @Query("max_id") String maxId);
 }

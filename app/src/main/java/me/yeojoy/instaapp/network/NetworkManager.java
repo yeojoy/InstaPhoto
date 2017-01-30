@@ -1,6 +1,7 @@
 package me.yeojoy.instaapp.network;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -36,7 +37,7 @@ public class NetworkManager implements NetworkConstants {
     private Retrofit mRetrofit;
 
     public interface OnGetDataListener {
-        void onGetData(List<InstaPhoto> photos);
+        void onGetData(List<InstaPhoto> photos, boolean moreAvailable, String lastId);
     }
 
     public NetworkManager() {
@@ -70,7 +71,7 @@ public class NetworkManager implements NetworkConstants {
 
     public void requestPhotos(Context context, String userName, String maxId, OnGetDataListener listener) throws IOException {
         Log.i(TAG, "userName : " + userName + ", maxId : " + maxId);
-        if (!Validator.isValidUserName(userName)) {
+        if (TextUtils.isEmpty(userName)) {
             Toast.makeText(context, R.string.toast_warning_not_validate_username, Toast.LENGTH_SHORT).show();
             return;
         }
@@ -84,9 +85,9 @@ public class NetworkManager implements NetworkConstants {
                 Photos photos = response.body();
                 if (listener != null) {
                     if (photos != null && photos.mItems != null) {
-                        listener.onGetData(ModelConvertor.convertPhotoToInstaPhoto(photos.mItems));
+                        listener.onGetData(ModelConvertor.convertPhotoToInstaPhoto(photos.mItems), photos.mMoreAvailable, photos.mItems[photos.mItems.length - 1].mId);
                     } else {
-                        listener.onGetData(new ArrayList<>());
+                        listener.onGetData(new ArrayList<>(), false, null);
                     }
                 }
             }

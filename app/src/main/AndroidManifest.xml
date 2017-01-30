@@ -10,7 +10,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".PhotoListActivity"
+        <activity
+            android:name=".PhotoListActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,7 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PhotoDetailActivity" />
+        <activity
+            android:name=".PhotoDetailActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
